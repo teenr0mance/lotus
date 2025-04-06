@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин косметики Lotus</title>
+    <link rel="stylesheet" href="aurora.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="location">
+                <label for="city">Выберите город:</label>
+                <select id="city" onchange="updateCity()">
+                    <option value="Уфа">Уфа</option>
+                    <option value="Москва">Москва</option>
+                    <option value="Санкт-Петербург">Санкт-Петербург</option>
+                </select>
+                <i class="fa fa-map-marker"></i>
+            </div>
+            <div class="logo-container">
+                <h1 class="logo">
+                    <img src="logo.png" alt="AURORA Beauty Logo" class="logo-img">
+                    Lotus
+                </h1>
+            </div>
+            <div class="header-icons">
+                <a href="#" class="icon"><i class="fa fa-search"></i></a>
+                <a href="#" class="icon"><i class="fa fa-heart"></i></a>
+                <a href="#" class="icon"><i class="fa fa-user"></i></a>
+                <a href="#" class="icon"><i class="fa fa-shopping-bag"></i></a>
+            </div>
+        </div>
+
+        <nav class="navbar">
+            <ul>
+                <li class="catalog-link">
+                    <a href="#">КАТАЛОГ</a>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="showProduct('hair')">Для волос</a>
+                        <a href="#" onclick="showProduct('body')">Для тела</a>
+                        <a href="#" onclick="showProduct('perfume')">Парфюмерия</a>
+                        <a href="#">Для ногтей</a>
+                        <a href="#">Уход</a>
+                        <a href="#">Новая коллекция</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    <div class="products-section" id="main-page">
+        <h1 class="products-section-title">Популярные товары</h1>
+        <div class="product-container">
+            <div class="product-card" onclick="showProduct('hair')">
+                <img src="tovar1.jpg" alt="Product 1">
+                <h2>RICH Pure Luxury Repairing Collagen Conditioner</h2>
+                <p class="price">1200₽</p>
+                <button>В корзину</button>
+            </div>
+
+            <div class="product-card" onclick="showProduct('body')">
+                <img src="tovar2.jpg" alt="Product 2">
+                <h2>DOUGLAS NATURALS Invigorating Shower Gel</h2>
+                <p class="price">2000₽</p>
+                <button>В корзину</button>
+            </div>
+
+            <div class="product-card" onclick="showProduct('perfume')">
+                <img src="tovar3.jpg" alt="Product 3">
+                <h2>RABANNE Olympea Blossom perfume</h2>
+                <p class="price">5000₽</p>
+                <button>В корзину</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-page" id="hair-product" style="display: none;">
+        <div class="product-detail">
+            <div class="product-gallery">
+                <img src="tovar1.jpg" alt="RICH Pure Luxury Repairing Collagen Conditioner" class="main-image" id="hairImage">
+                <div class="thumbnails">
+                    <img src="tovar1.jpg" alt="Thumbnail 1" class="thumbnail" onclick="document.getElementById('hairImage').src='tovar1.jpg'">
+                    <img src="tovar1_2.jpg" alt="Thumbnail 2" class="thumbnail" onclick="document.getElementById('hairImage').src='tovar1_2.jpg'">
+                    <img src="tovar1_3.jpg" alt="Thumbnail 3" class="thumbnail" onclick="document.getElementById('hairImage').src='tovar1_3.jpg'">
+                </div>
+            </div>
+            <div class="product-info">
+                <button class="back-button" onclick="showMainPage()"><i class="fa fa-arrow-left"></i> Назад</button>
+                <h1 class="product-title">RICH Pure Luxury Repairing Collagen Conditioner</h1>
+                <div class="product-brand">RICH</div>
+                <div class="product-price">1 200 ₽</div>
+                
+                <div class="product-description">
+                    <p>Кондиционер с коллагеном для восстановления поврежденных волос. Интенсивно питает и восстанавливает структуру волос, придавая им блеск и мягкость.</p>
+                    <p>Объем: 250 мл</p>
+                </div>
+                
+                <div class="product-actions">
+                    <button class="add-to-cart" onclick="addToCart('RICH Pure Luxury Repairing Collagen Conditioner', 1200)">Добавить в корзину</button>
+                    <button class="wishlist"><i class="fa fa-heart"></i></button>
+                </div>
+                
+                <div class="delivery-info">
+                    <p><i class="fa fa-truck"></i> Бесплатная доставка при заказе от 3000 ₽</p>
+                    <p><i class="fa fa-clock-o"></i> Доставка за 1-2 дня</p>
+                </div>
+                
+                <div class="product-details">
+                    <h3 class="details-title">Описание</h3>
+                    <div class="details-content">
+                        <p>Кондиционер RICH Pure Luxury Repairing Collagen Conditioner создан для интенсивного восстановления поврежденных волос.</p>
+                        <p><strong>Эффект:</strong></p>
+                        <ul>
+                            <li>Восстанавливает поврежденные волосы</li>
+                            <li>Придает блеск и мягкость</li>
+                            <li>Защищает от термического воздействия</li>
+                            <li>Облегчает расчесывание</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-page" id="body-product" style="display: none;">
+        <div class="product-detail">
+            <div class="product-gallery">
+                <img src="tovar2.jpg" alt="DOUGLAS NATURALS Invigorating Shower Gel" class="main-image" id="bodyImage">
+                <div class="thumbnails">
+                    <img src="tovar2.jpg" alt="Thumbnail 1" class="thumbnail" onclick="document.getElementById('bodyImage').src='tovar2.jpg'">
+                </div>
+            </div>
+            <div class="product-info">
+                <button class="back-button" onclick="showMainPage()"><i class="fa fa-arrow-left"></i> Назад</button>
+                <h1 class="product-title">DOUGLAS NATURALS Invigorating Shower Gel</h1>
+                <div class="product-brand">DOUGLAS NATURALS</div>
+                <div class="product-price">2 000 ₽</div>
+                
+                <div class="product-description">
+                    <p>Освежающий гель для душа с натуральными экстрактами мяты и эвкалипта. Очищает кожу, не нарушая ее естественный баланс.</p>
+                    <p>Объем: 300 мл</p>
+                </div>
+                
+                <div class="product-actions">
+                    <button class="add-to-cart" onclick="addToCart('DOUGLAS NATURALS Invigorating Shower Gel', 2000)">Добавить в корзину</button>
+                    <button class="wishlist"><i class="fa fa-heart"></i></button>
+                </div>
+                
+                <div class="delivery-info">
+                    <p><i class="fa fa-truck"></i> Бесплатная доставка при заказе от 3000 ₽</p>
+                    <p><i class="fa fa-clock-o"></i> Доставка за 1-2 дня</p>
+                </div>
+                
+                <div class="product-details">
+                    <h3 class="details-title">Описание</h3>
+                    <div class="details-content">
+                        <p>DOUGLAS NATURALS Invigorating Shower Gel - это гель для душа премиум-класса с натуральными компонентами.</p>
+                        <p><strong>Основные ингредиенты:</strong></p>
+                        <ul>
+                            <li>Экстракт мяты - освежает и тонизирует кожу</li>
+                            <li>Экстракт эвкалипта - обладает антибактериальными свойствами</li>
+                            <li>Натуральные масла - увлажняют и питают кожу</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Страница товара 3 -->
+    <div class="product-page" id="perfume-product" style="display: none;">
+        <div class="product-detail">
+            <div class="product-gallery">
+                <img src="tovar3.jpg" alt="RABANNE Olympea Blossom perfume" class="main-image" id="perfumeImage">
+                <div class="thumbnails">
+                    <img src="tovar3.jpg" alt="Thumbnail 1" class="thumbnail" onclick="document.getElementById('perfumeImage').src='tovar3.jpg'">
+                    <img src="tovar3_2.jpg" alt="Thumbnail 2" class="thumbnail" onclick="document.getElementById('perfumeImage').src='tovar3_2.jpg'">
+                    <img src="tovar3_3.jpg" alt="Thumbnail 3" class="thumbnail" onclick="document.getElementById('perfumeImage').src='tovar3_3.jpg'">
+                </div>
+            </div>
+            <div class="product-info">
+                <button class="back-button" onclick="showMainPage()"><i class="fa fa-arrow-left"></i> Назад</button>
+                <h1 class="product-title">RABANNE Olympea Blossom perfume</h1>
+                <div class="product-brand">PACO RABANNE</div>
+                <div class="product-price">5 000 ₽</div>
+                
+                <div class="product-description">
+                    <p>Цветочный парфюм для женщин с нотами мандарина, жасмина и ванили. Свежий, чувственный и женственный аромат.</p>
+                    <p>Объем: 50 мл</p>
+                    <p>Тип: Eau de Parfum</p>
+                </div>
+                
+                <div class="product-actions">
+                    <button class="add-to-cart" onclick="addToCart('RABANNE Olympea Blossom perfume', 5000)">Добавить в корзину</button>
+                    <button class="wishlist"><i class="fa fa-heart"></i></button>
+                </div>
+                
+                <div class="delivery-info">
+                    <p><i class="fa fa-truck"></i> Бесплатная доставка при заказе от 3000 ₽</p>
+                    <p><i class="fa fa-clock-o"></i> Доставка за 1-2 дня</p>
+                </div>
+                
+                <div class="product-details">
+                    <h3 class="details-title">Описание аромата</h3>
+                    <div class="details-content">
+                        <p>Olympea Blossom от Paco Rabanne - это цветочная интерпретация культового аромата Olympea.</p>
+                        <h4>Пирамида аромата:</h4>
+                        <div class="fragrance-notes">
+                            <div class="note">
+                                <div class="note-circle"><i class="fa fa-lemon-o"></i></div>
+                                <div>Верхние ноты:<br>Мандарин, Лимон</div>
+                            </div>
+                            <div class="note">
+                                <div class="note-circle"><i class="fa fa-leaf"></i></div>
+                                <div>Сердечные ноты:<br>Жасмин, Цветок апельсина</div>
+                            </div>
+                            <div class="note">
+                                <div class="note-circle"><i class="fa fa-spoon"></i></div>
+                                <div>Базовые ноты:<br>Ваниль, Амбра</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Ваша корзина</h3>
+                <button class="close-cart">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Товары будут добавляться сюда -->
+            </div>
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <span>Итого:</span>
+                    <span id="cartTotal">0 ₽</span>
+                </div>
+                <button class="checkout-btn">Оформить заказ</button>
+            </div>
+        </div>
+    </div>
+    <!-- Страница личного кабинета -->
+<div class="account-page" id="accountPage" style="display: none;">
+    <div class="account-container">
+        <div class="account-sidebar">
+            <div class="account-user">
+                <div class="user-avatar">
+                    <img src="user-avatar.jpg" alt="Аватар" id="userAvatar">
+                    <button class="change-avatar">Изменить</button>
+                </div>
+                <h3 id="userName">Иван Иванов</h3>
+                <p id="userEmail">ivan@example.com</p>
+        <div class="account-content">
+            <!-- Профиль -->
+            <div class="account-tab active" id="profileTab">
+                <h2>Личные данные</h2>
+                <form class="account-form">
+                    <div class="form-group">
+                        <label>Имя</label>
+                        <input type="text" value="Иван" id="firstName">
+                    </div>
+                    <div class="form-group">
+                        <label>Фамилия</label>
+                        <input type="text" value="Иванов" id="lastName">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" value="ivan@example.com" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label>Телефон</label>
+                        <input type="tel" value="+7 (900) 123-45-67" id="phone">
+                    </div>
+                    <div class="form-group">
+                        <label>Дата рождения</label>
+                        <input type="date" value="1990-01-01" id="birthDate">
+                    </div>
+                    <button type="submit" class="save-btn">Сохранить изменения</button>
+                </form>
+            </div>
+
+            <!-- Заказы -->
+            <div class="account-tab" id="ordersTab">
+                <h2>История заказов</h2>
+                <div class="orders-list">
+                    <div class="order-card">
+                        <div class="order-header">
+                            <div class="order-info">
+                                <span class="order-number">Заказ #12345</span>
+                                <span class="order-date">15 мая 2023</span>
+                                <span class="order-status completed">Выполнен</span>
+                            </div>
+                            <div class="order-total">12 450 ₽</div>
+                        </div>
+                        <div class="order-products">
+                            <div class="order-product">
+                                <img src="tovar1.jpg" alt="Товар">
+                                <div class="product-info">
+                                    <h4>RICH Pure Luxury Repairing Collagen Conditioner</h4>
+                                    <p>1 × 1 200 ₽</p>
+                                </div>
+                            </div>
+                            <div class="order-product">
+                                <img src="tovar3.jpg" alt="Товар">
+                                <div class="product-info">
+                                    <h4>RABANNE Olympea Blossom perfume</h4>
+                                    <p>1 × 5 000 ₽</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-actions">
+                            <button class="reorder-btn">Повторить заказ</button>
+                            <button class="details-btn">Подробнее</button>
+                        </div>
+                    </div>
+
+                    <div class="order-card">
+                        <div class="order-header">
+                            <div class="order-info">
+                                <span class="order-number">Заказ #12344</span>
+                                <span class="order-date">10 мая 2023</span>
+                                <span class="order-status delivered">Доставлен</span>
+                            </div>
+                            <div class="order-total">6 200 ₽</div>
+                        </div>
+                        <div class="order-products">
+                            <div class="order-product">
+                                <img src="tovar2.jpg" alt="Товар">
+                                <div class="product-info">
+                                    <h4>DOUGLAS NATURALS Invigorating Shower Gel</h4>
+                                    <p>2 × 2 000 ₽</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-actions">
+                            <button class="reorder-btn">Повторить заказ</button>
+                            <button class="details-btn">Подробнее</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Адреса -->
+            <div class="account-tab" id="addressesTab">
+                <h2>Мои адреса</h2>
+                <div class="addresses-list">
+                    <div class="address-card default">
+                        <div class="address-content">
+                            <h4>Основной адрес</h4>
+                            <p>г. Москва, ул. Тверская, д. 10, кв. 25</p>
+                            <p>Почтовый индекс: 125009</p>
+                        </div>
+                        <div class="address-actions">
+                            <button class="edit-address">Изменить</button>
+                            <button class="remove-address">Удалить</button>
+                        </div>
+                    </div>
+                    <button class="add-address-btn">+ Добавить новый адрес</button>
+                </div>
+            </div>
+
+            <!-- Настройки -->
+            <div class="account-tab" id="settingsTab">
+                <h2>Настройки аккаунта</h2>
+                <form class="settings-form">
+                    <div class="form-group">
+                        <label>Язык</label>
+                        <select id="language">
+                            <option value="ru">Русский</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Уведомления</label>
+                        <div class="checkbox-group">
+                            <label>
+                                <input type="checkbox" checked> Email-уведомления
+                            </label>
+                            <label>
+                                <input type="checkbox" checked> SMS-уведомления
+                            </label>
+                            <label>
+                                <input type="checkbox"> Push-уведомления
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Смена пароля</label>
+                        <input type="password" placeholder="Текущий пароль">
+                        <input type="password" placeholder="Новый пароль">
+                        <input type="password" placeholder="Повторите новый пароль">
+                    </div>
+                    <button type="submit" class="save-btn">Сохранить настройки</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="aurora.js"></script>
+</body>
+</html>
